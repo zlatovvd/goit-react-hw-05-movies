@@ -1,4 +1,4 @@
-import Menu from './Menu/Menu';
+import Menu from './Layout/Layout';
 
 export const App = () => {
   return (
