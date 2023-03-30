@@ -1,18 +1,23 @@
-import Menu from './Layout/Layout';
+import { Routes, Route } from 'react-router-dom';
+import { HomePage, MoviesPage } from './pages';
+import { MovieDetails } from './Movie/MovieDetails';
+import Layout from './Layout/Layout';
+import Cast from './Cast/Cast';
+import Reviews from './Reviews/Reviews';
 
 export const App = () => {
   return (
-    <div
-      style={{
-        // height: '100vh',
-        // display: 'flex',
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        // fontSize: 40,
-        // color: '#010101'
-      }}
-    >
-      <Menu/>
+    <div>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/movies/:moveId" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast/>}></Route>
+            <Route path="reviews" element={<Reviews/>}></Route>
+          </Route>
+        </Routes>
+      </Layout>
     </div>
   );
 };

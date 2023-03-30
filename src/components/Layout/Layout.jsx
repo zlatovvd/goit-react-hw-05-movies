@@ -1,7 +1,5 @@
-import { Routes, Route, NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
-import {HomePage, MoviesPage} from '../pages';
-import {MovieDetails} from '../Movie/MovieDetails';
 
 const StyledLink = styled(NavLink)`
   color: black;
@@ -11,9 +9,9 @@ const StyledLink = styled(NavLink)`
   }
 `;
 
-const Menu = () => {
+const Layout = ({children}) => {
   return (
-    <div>      
+    <div>
       <nav>
         <ul>
           <li>
@@ -24,15 +22,10 @@ const Menu = () => {
           </li>
         </ul>
       </nav>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/movies" element={<MoviesPage />}>
-            <Route path=":moveId" element={<MovieDetails />} />
-          </Route>
-        </Routes>
+      {children}
       <Outlet />
     </div>
   );
 };
 
-export default Menu;
+export default Layout;
