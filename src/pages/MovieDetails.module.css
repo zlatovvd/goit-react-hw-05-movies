@@ -1,0 +1,33 @@
+.movieDetails {
+    padding-left: 15px;
+}
+
+.movieWrapper {
+    display: flex;
+    margin-top: 5px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid silver;
+}
+
+.about {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.about h1 {
+    font-size: 22px;
+}
+
+.about h2 {
+    font-size: 18px;
+}
+
+h3 {
+    font-size: 16px;
+    margin-left: 15px;
+}
+
+.informationList {
+    padding-bottom: 10px;
+    border-bottom: 2px solid silver;
+}

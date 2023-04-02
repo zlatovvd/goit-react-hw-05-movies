@@ -1,5 +1,7 @@
+import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
+import css from './Layout.module.css';
 
 const StyledLink = styled(NavLink)`
   color: black;
@@ -9,13 +11,15 @@ const StyledLink = styled(NavLink)`
   }
 `;
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   return (
     <div>
-      <nav>
-        <ul>
+      <nav className={css.nav}>
+        <ul className={css.list}>
           <li>
-            <StyledLink to="/">Home</StyledLink>
+            <StyledLink to="/" className={css.link}>
+              Home
+            </StyledLink>
           </li>
           <li>
             <StyledLink to="/movies">Movies</StyledLink>
@@ -23,7 +27,9 @@ const Layout = ({children}) => {
         </ul>
       </nav>
       {children}
-      <Outlet />
+      <Suspense fallback={<div>...Loading page</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

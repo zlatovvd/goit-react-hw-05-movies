@@ -1,0 +1,16 @@
+.nav {
+  border-bottom: 3px solid silver;
+}
+
+.list {
+  display: flex;
+  list-style: none;
+}
+
+.list li:first-child {
+  margin-right: 15px;
+}
+
+.link {
+  text-decoration: none;
+}
