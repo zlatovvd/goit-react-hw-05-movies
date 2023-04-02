@@ -8,6 +8,7 @@ const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
+  console.log(location.state); 
 
   useEffect(() => {
     setIsLoading(true);
@@ -54,10 +55,10 @@ const MovieDetails = () => {
         <h3>Additional information</h3>
         <ul className={css.informationList}>
           <li>
-            <Link to={`/movies/${movieId}/cast`}>Cast</Link>
+            <Link to={`/movies/${movieId}/cast`} state={{ from: location.state.from }}>Cast</Link>
           </li>
           <li>
-            <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
+            <Link to={`/movies/${movieId}/reviews`} state={{ from: location.state.from }}>Reviews</Link>
           </li>
         </ul>
         <Suspense fallback={<div>...Loading page</div>}>
