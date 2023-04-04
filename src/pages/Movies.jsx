@@ -51,11 +51,11 @@ const Movies = () => {
       </form>
       {movies && (
         <ul>
-          {movies.map(({ id, name }) => {
+          {movies.map(({ id, title }) => {
             return (
               <li key={id}>
                 <Link to={`/movies/${id}`} state={{ from: location }}>
-                  {name}
+                  {title}
                 </Link>
               </li>
             );
