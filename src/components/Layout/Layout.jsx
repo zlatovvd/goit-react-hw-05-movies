@@ -1,7 +1,7 @@
-import { Routes, Route, NavLink, Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
-import {HomePage, MoviesPage} from '../pages';
-import {MovieDetails} from '../Movie/MovieDetails';
+import css from './Layout.module.css';
 
 const StyledLink = styled(NavLink)`
   color: black;
@@ -11,28 +11,27 @@ const StyledLink = styled(NavLink)`
   }
 `;
 
-const Menu = () => {
+const Layout = ({ children }) => {
   return (
-    <div>      
-      <nav>
-        <ul>
+    <div>
+      <nav className={css.nav}>
+        <ul className={css.list}>
           <li>
-            <StyledLink to="/">Home</StyledLink>
+            <StyledLink to="/" className={css.link}>
+              Home
+            </StyledLink>
           </li>
           <li>
             <StyledLink to="/movies">Movies</StyledLink>
           </li>
         </ul>
       </nav>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/movies" element={<MoviesPage />}>
-            <Route path=":moveId" element={<MovieDetails />} />
-          </Route>
-        </Routes>
-      <Outlet />
+      {children}
+      <Suspense fallback={<div>...Loading page</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
 
-export default Menu;
+export default Layout;
